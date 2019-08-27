@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <title>Packagist Mirror</title>
 
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -38,7 +38,7 @@
         </style>
 
 
-        <?php if(!empty($googleAnalyticsId)) {?>
+        <?php if (!empty($googleAnalyticsId)): ?>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=<?=$googleAnalyticsId?>"></script>
         <script>
@@ -51,7 +51,7 @@
             gtag('js', new Date());
             gtag('config', '<?=$googleAnalyticsId?>');
         </script>
-        <?php }?>
+        <?php endif ?>
 
     </head>
     <body>
@@ -70,15 +70,22 @@
                         <p><span id="lastsynced" ></span><br>(Synchronized every <?= $synced ?> seconds)</p>
                     </div>
                     <p>
-                        This is PHP package repository Packagist.org mirror site.
+                        This is a mirror site of Packagist, PHP package repository.
                     </p>
                     <p>
-                        If you're using PHP Composer, commands like <mark class="default">create-project</mark>, <mark class="default">require</mark>, <mark class="default">update</mark>, <mark class="default">remove</mark> are often used.
-                        When those commands are executed, Composer will download information from the packages that are needed also from dependent packages. The number of json files downloaded depends on the complexity of the packages which are going to be used.
-                        The further you are from the location of the packagist.org server, the more time is needed to download json files. By using mirror, it will help save the time for downloading because the server location is closer.
+                        If you're using Composer, commands like <mark class="default">create-project</mark>,
+                        <mark class="default">require</mark>, <mark class="default">update</mark>,
+                        <mark class="default">remove</mark> are often used.
+                        When those commands are executed, Composer downloads the JSON file containing the package
+                        information from Packagist, and downloads the necessary packages and the JSON files of the
+                        packages that depend on them. Depending on the complexity of the package, you can download
+                        dozens or hundreds of JSON files. The further you are from the location of the Packagist
+                        server, the more time is needed to download those JSON files. By using mirror, it will help
+                        save the time for downloading because the server location is closer.
                     </p>
                     <p>
-                        Please do the following command to change the PHP Composer config to use this site as default Composer repository.
+                        Please do the following command to change the Composer config to use this site
+                        as default Composer repository.
                     </p>
                     <div class="tabs stacked">
                         <input type="radio" name="accordion" id="enable" checked aria-hidden="true">
@@ -86,7 +93,10 @@
                         <div>
                             <p class="bash" >
                                 $ <span id="enablingStep"></span>
-                                <button class="small tertiary ctclipboard" data-clipboard-target="#enablingStep"><img class="clippy" width="13" src="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/svg/clippy.svg" alt="Copy to clipboard"> Copy</button>
+                                <button class="small tertiary ctclipboard" data-clipboard-target="#enablingStep">
+                                    <img class="clippy" width="13" src="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/svg/clippy.svg" alt="Copy to clipboard">
+                                    Copy
+                                </button>
                             </p>
                         </div>
                         <input type="radio" name="accordion" id="disable"aria-hidden="true">
@@ -94,26 +104,39 @@
                         <div>
                             <p class="bash" >
                                 $ <span id="disablingStep"></span>
-                                <button class="small tertiary ctclipboard" data-clipboard-target="#disablingStep"><img class="clippy" width="13" src="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/svg/clippy.svg" alt="Copy to clipboard"> Copy</button>
+                                <button class="small tertiary ctclipboard" data-clipboard-target="#disablingStep">
+                                    <img class="clippy" width="13" src="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/svg/clippy.svg" alt="Copy to clipboard">
+                                    Copy
+                                </button>
                             </p>
                         </div>
                     </div>
 
                     <h2>Disclaimer</h2>
-                    <p>This site offers its services free of charge and only as a mirror site.</p>
-                    <p>This site only provides package information / metadata with no distribution file of the packages. All packages metadata files are mirrored from <a href="https://packagist.org" target="_blank">Packagist.org</a>. We do not modify and/or process the JSON files. If there is something wrong, please disable the setting the Disable command above and try to refer to the original packagist.org.</p>
+                    <p>
+                        This service is personally maintained by
+                        <a href="<?= $maintainerProfile ?>" target="_blank"><?= $maintainerMirror ?></a>.
+                        There is no charge for using the service, but since it is operated by individuals,
+                        we cannot guarantee anything even if a failure occurs.
+                    </p>
+                    <p>
+                        This site only provides package information/metadata with no distribution file of the packages.
+                        All packages metadata files are mirrored from
+                        <a href="https://packagist.org" target="_blank">Packagist</a>.
+                        We do not modify and/or process the JSON files. If there is something wrong,
+                        please disable the setting using the Disable command above and
+                        try to refer to the original Packagist.</p>
                 </div>
             </div>
         </div>
         <footer class="row">
             <div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
                 <p>
-                    <b>Packagist Mirror</b> was built from <?= $countryName ?> by
-                    <a href="<?= $maintainerProfile ?>" target="_blank"><?= $maintainerMirror ?></a>.
+                    Copyright &copy; <?= date('Y') ?> <a href="<?= $maintainerProfile ?>" target="_blank"><?= $maintainerMirror ?></a>.
                 </p>
                 <p>
-                    It is licensed under the <a href="<?= $maintainerRepo ?>/blob/master/LICENSE" target="_blank"><?= $maintainerLicense ?></a>.
-                    You can view the project's source code on <a href="<?= $maintainerRepo ?>" target="_blank">GitHub</a>.
+                    Licensed under the <a href="<?= $maintainerRepo ?>/blob/master/LICENSE" target="_blank"><?= $maintainerLicense ?></a>.
+                    You can view the source code of this project on <a href="<?= $maintainerRepo ?>" target="_blank">GitHub</a>.
                 </p>
             </div>
         </footer>
@@ -145,7 +168,7 @@
             fetchHeader(location.href,'Last-Modified');
             setInterval(function(){
                 fetchHeader(location.href,'Last-Modified');
-            }, (<?=$synced ?>000));
+            }, (<?= $synced ?>000));
         </script>
     </body>
 </html>

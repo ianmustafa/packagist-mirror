@@ -1,9 +1,10 @@
 {
-    "name": "webysther/packagist-mirror",
-    "description": "Build mirror of packagist",
+    "name": "ianmustafa/packagist-mirror",
+    "description": "Creates a Packagist Mirror server.",
     "keywords": ["packagist", "mirror"],
     "license": "MIT",
     "authors": [
+        { "name": "Ian Mustafa", "email": "mail@ianmustafa.com" },
         { "name": "Webysther", "email": "webysther@gmail.com" }
     ],
     "require": {
@@ -26,7 +27,7 @@
         "mikey179/vfsStream": "~1"
     },
     "suggest": {
-        "hirak/prestissimo": "Composer parallel install plugin"
+        "hirak/prestissimo": "A Composer plugin to enable parallel package installation."
     },
     "autoload": {
         "psr-4": { "Webs\\Mirror\\": "src/" }
